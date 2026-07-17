@@ -15,6 +15,6 @@ public final class LogSanitizer {
         if (value == null) {
             return NULL_REPLACEMENT;
         }
-        return CONTROL_CHARS.matcher(value).replaceAll("_");
+        return value.replaceAll("[\\r\\n\\t\\f\\x0B\\p{Cntrl}]", "_");
     }
 }
