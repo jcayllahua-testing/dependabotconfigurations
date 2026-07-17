@@ -25,7 +25,7 @@ public class BookController {
             @Parameter(description = "Optional query parameter to filter books by title", required = false)
             String titleFilter
     ) {
-        log.info("titleFilter: {}", titleFilter);
+        log.info("The value of titleFilter: {}", titleFilter);
         List<Book> books = List.of(new Book("Book 1"), new Book("Book 2"), new Book("Book 3"));
         return Mono.just(ResponseEntity.ok(books));
     }
