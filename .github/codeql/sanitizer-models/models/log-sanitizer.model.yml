@@ -1,0 +1,7 @@
+extensions:
+  - addsTo:
+      pack: codeql/java-all
+      extensible: barrierModel
+    data:
+      # [package, type, subtypes, name, signature, ext, output, kind, provenance]
+      - ["com.jcayllahua.dependabotconfigurations.util", "LogSanitizer", False, "sanitize", "(String)", "", "ReturnValue", "log-injection", "manual"]
