@@ -1,5 +1,6 @@
 package com.jcayllahua.dependabotconfigurations.interfaces.rest;
 
+import com.jcayllahua.dependabotconfigurations.domain.Book;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -20,12 +21,12 @@ public class BookController {
     @Operation(summary = "Get all books", description = "Returns a list of all books")
     @ApiResponse(responseCode = "200", description = "Successfully retrieved list of books")
     @GetMapping(produces = "application/json")
-    public Mono<ResponseEntity<List<String>>> getBooks(
+    public Mono<ResponseEntity<List<Book>>> getBooks(
             @Parameter(description = "Optional query parameter to filter books by title", required = false)
             String titleFilter
     ) {
         log.info("titleFilter: {}", titleFilter);
-        List<String> books = List.of("Book 1", "Book 2", "Book 3");
+        List<Book> books = List.of(new Book("Book 1"), new Book("Book 2"), new Book("Book 3"));
         return Mono.just(ResponseEntity.ok(books));
     }
 }
