@@ -33,7 +33,7 @@ public class BookController {
     ) {
         log.info("The value of titleFilter: {}", LogSanitizer.sanitize(titleFilter));
         return bookQueryService.getBooks(titleFilter)
-                .doOnNext(books -> log.info("Retrieved {} books for titleFilter={}", books.size(), titleFilter))
+                .doOnNext(books -> log.info("Retrieved {} books for titleFilter={}", books.size(), LogSanitizer.sanitize(titleFilter)))
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
