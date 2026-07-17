@@ -1,0 +1,29 @@
+# .github/workflows/publish-model-pack.yml
+name: Publish CodeQL model pack
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - ".github/codeql/sanitizer-models/**"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download CodeQL CLI
+        run: |
+          curl -sL -o codeql.tar.gz https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz
+          tar xzf codeql.tar.gz
+
+      - name: Publish pack
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | ./codeql/codeql pack publish \
+            --github-auth-stdin \
+            .github/codeql/sanitizer-models
