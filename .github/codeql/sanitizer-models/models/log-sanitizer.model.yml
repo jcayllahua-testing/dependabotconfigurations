@@ -4,4 +4,4 @@ extensions:
       extensible: barrierModel
     data:
       # [package, type, subtypes, name, signature, ext, output, kind, provenance]
-      - ["com.jcayllahua.dependabotconfigurations.util", "LogSanitizer", False, "sanitize", "(String)", "", "ReturnValue", "log-injection", "manual"]
+      - ["com.jcayllahua.dependabotconfigurations.utils", "LogSanitizer", False, "sanitize", "(String)", "", "ReturnValue", "log-injection", "manual"]
