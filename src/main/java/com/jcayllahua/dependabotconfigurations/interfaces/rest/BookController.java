@@ -2,6 +2,7 @@ package com.jcayllahua.dependabotconfigurations.interfaces.rest;
 
 import com.jcayllahua.dependabotconfigurations.domain.Book;
 import com.jcayllahua.dependabotconfigurations.domain.services.BookQueryService;
+import com.jcayllahua.dependabotconfigurations.utils.LogSanitizer;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,7 +31,7 @@ public class BookController {
             @Parameter(description = "Optional query parameter to filter books by title", required = false)
             String titleFilter
     ) {
-        log.info("The value of titleFilter: {}", titleFilter);
+        log.info("The value of titleFilter: {}", LogSanitizer.sanitize(titleFilter));
         return bookQueryService.getBooks(titleFilter)
                 .doOnNext(books -> log.info("Retrieved {} books for titleFilter={}", books.size(), titleFilter))
                 .map(ResponseEntity::ok)
