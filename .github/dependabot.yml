@@ -1,5 +1,9 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+
 version: 2
 updates:
-  - package-ecosystem: "gradle"
-    schedule:
-      interval: "daily" # You can set this to daily, weekly, or monthly
+- package-ecosystem: "" # See documentation for possible values
+  directory: "/" # Location of package manifests
+  schedule:
+    interval: "weekly"
